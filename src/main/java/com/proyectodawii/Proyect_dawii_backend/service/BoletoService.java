@@ -66,7 +66,7 @@ public class BoletoService {
      * Admin puede inspeccionar los boletos de un usuario concreto.
      */
     public List<Boleto> listarPorUsuario(Long codUsua) {
-        return repo.findByUsuarioId(codUsua);
+        return repo.findByUsuarioCodUsua(codUsua);
     }
 
     public List<Boleto> listarPorVuelo(Long idVuelo) {

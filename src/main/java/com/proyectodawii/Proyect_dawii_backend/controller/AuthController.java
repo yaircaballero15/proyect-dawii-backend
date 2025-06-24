@@ -45,4 +45,9 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
+
+    @GetMapping("/prueba")
+    public ResponseEntity<?> prueba() {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("prueba");
+    }
 }

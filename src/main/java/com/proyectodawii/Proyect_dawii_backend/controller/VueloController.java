@@ -5,7 +5,6 @@ import com.proyectodawii.Proyect_dawii_backend.dto.VueloDTO;
 import com.proyectodawii.Proyect_dawii_backend.model.Vuelo;
 import com.proyectodawii.Proyect_dawii_backend.service.VueloService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/vuelos")
