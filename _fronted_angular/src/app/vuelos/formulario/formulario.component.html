@@ -1,0 +1,15 @@
+<h2>Nuevo Vuelo</h2>
+<form (ngSubmit)="guardar()">
+  <input [(ngModel)]="vuelo.numeroVuelo" name="numero" placeholder="Número de vuelo" required />
+  <input [(ngModel)]="vuelo.aerolinea" name="aerolinea" placeholder="Aerolínea" required />
+  <input [(ngModel)]="vuelo.origen" name="origen" placeholder="Origen" required />
+  <input [(ngModel)]="vuelo.destino" name="destino" placeholder="Destino" required />
+  <input [(ngModel)]="vuelo.horaSalida" name="salida" type="datetime-local" required />
+  <input [(ngModel)]="vuelo.horaLlegada" name="llegada" type="datetime-local" required />
+  <select [(ngModel)]="vuelo.estado" name="estado">
+    <option value="Programado">Programado</option>
+    <option value="Retrasado">Retrasado</option>
+    <option value="Cancelado">Cancelado</option>
+  </select>
+  <button type="submit">Guardar</button>
+</form>
