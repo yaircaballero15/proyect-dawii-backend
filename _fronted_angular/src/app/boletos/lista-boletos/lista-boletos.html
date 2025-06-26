@@ -1,0 +1,24 @@
+<h2>Listado de Boletos</h2>
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Asiento</th>
+      <th>Precio</th>
+      <th>Fecha de Compra</th>
+      <th>Vuelo</th>
+      <th>Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of boletos">
+      <td>{{ b.id }}</td>
+      <td>{{ b.asiento }}</td>
+      <td>{{ b.precio | currency }}</td>
+      <td>{{ b.fechaCompra | date:'short' }}</td>
+      <td>{{ b.vuelo.origen }} → {{ b.vuelo.destino }}</td>
+      <td>{{ b.usuario.nombre }}</td>
+    </tr>
+  </tbody>
+</table>
