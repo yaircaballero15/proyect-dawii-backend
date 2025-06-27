@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "d60ea027-73b2-4d87-a4aa-60d0ff219a00",
+		"name": "Proyecto DAWII",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19734427"
+	},
+	"item": [
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "http://localhost:8081/auth/prueba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/prueba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"prueba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8081/auth/login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\":\"juan@perez.com\",\r\n    \"clave\":\"jueanperez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8081/auth/registrar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom_usua\":\"Juan\" ,\r\n    \"ape_usua\":\"Perez\" ,\r\n    \"correo\":\"juan@perez.com\" ,\r\n    \"clave\":\"jueanperez\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
