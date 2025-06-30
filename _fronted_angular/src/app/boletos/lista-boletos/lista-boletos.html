@@ -1,5 +1,7 @@
 <h2>Listado de Boletos</h2>
 
+<button (click)="nuevoBoleto()">Agregar Boleto</button>
+
 <table border="1" cellpadding="6" cellspacing="0">
   <thead>
     <tr>
@@ -19,6 +21,10 @@
       <td>{{ b.fechaCompra | date:'short' }}</td>
       <td>{{ b.vuelo.origen }} → {{ b.vuelo.destino }}</td>
       <td>{{ b.usuario.nombre }}</td>
+      <td>
+        <button (click)="verDetalle(b.id)">Ver</button>
+        <button (click)="editarBoleto(b.id)">Editar</button>
+    </td>
     </tr>
   </tbody>
 </table>

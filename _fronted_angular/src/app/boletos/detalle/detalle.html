@@ -1,0 +1,12 @@
+<h2>Detalle del Boleto</h2>
+
+<div *ngIf="boleto; else cargando">
+  <p><strong>ID:</strong> {{ boleto.id }}</p>
+  <p><strong>Asiento:</strong> {{ boleto.asiento }}</p>
+  <p><strong>Precio:</strong> S/ {{ boleto.precio }}</p>
+  <p><strong>Fecha de compra:</strong> {{ boleto.fechaCompra | date:'short' }}</p>
+  <p><strong>Número de vuelo:</strong> {{ boleto.vuelo?.numeroVuelo }}</p>
+  <p><strong>Aerolínea:</strong> {{ boleto.vuelo?.aerolinea }}</p>
+  <p><strong>Ruta:</strong> {{ boleto.vuelo?.origen }} → {{ boleto?.vuelo?.destino }}</p>
+</div>
+<button (click)="volver()">Volver a la lista</button>

@@ -1,0 +1,31 @@
+<h2>Nuevo Boleto</h2>
+
+<form (ngSubmit)="guardar()" #boletoForm="ngForm">
+
+  <label>Asiento:
+    <input type="text" [(ngModel)]="boleto.asiento" name="asiento" required />
+  </label><br /><br />
+
+  <label>Precio:
+    <input type="number" [(ngModel)]="boleto.precio" name="precio" required />
+  </label><br /><br />
+
+  <label>Usuario:
+    <select [(ngModel)]="boleto.usuario.codUsua" name="usuario" required>
+      <option *ngFor="let u of usuarios" [value]="u.codUsua">
+        {{ u.nomUsua }} {{ u.apeUsua }}
+      </option>
+    </select>
+  </label><br /><br />
+
+  <label>Vuelo:
+    <select [(ngModel)]="boleto.vuelo.id" name="vuelo" required>
+      <option *ngFor="let v of vuelos" [value]="v.id">
+        {{ v.numeroVuelo }} - {{ v.origen }} → {{ v.destino }}
+      </option>
+    </select>
+  </label><br /><br />
+
+  <button type="submit" [disabled]="!boletoForm.form.valid">Guardar</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>
