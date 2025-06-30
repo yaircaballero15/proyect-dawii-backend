@@ -1,5 +1,6 @@
 package com.proyectodawii.Proyect_dawii_backend.controller;
 
+import com.proyectodawii.Proyect_dawii_backend.dto.AuthResponseDTO;
 import com.proyectodawii.Proyect_dawii_backend.dto.LoginDTO;
 import com.proyectodawii.Proyect_dawii_backend.dto.RegistroUsuarioDTO;
 import com.proyectodawii.Proyect_dawii_backend.model.Usuario;
@@ -39,10 +40,23 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO dto) {
         try {
-            Usuario usuario = servicio.login(dto);
-            return ResponseEntity.ok(usuario);
+          Usuario usuario = servicio.login(dto);
+          // Genera el JWT
+          String jwt = jwtUtil.generarToken(usuario);
+
+          // Construye el DTO de respuesta
+          AuthResponseDTO resp = new AuthResponseDTO(
+            jwt,
+            usuario.getCodUsua(),
+            usuario.getNomUsua(),
+            usuario.getApeUsua(),
+            usuario.getCorreo(),
+            usuario.getRolUsua()
+          );
+
+          return ResponseEntity.ok(resp);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+          return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
 
