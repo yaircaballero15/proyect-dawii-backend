@@ -23,7 +23,7 @@ export interface Boleto {
   providedIn: 'root'
 })
 export class BoletoService {
-  private apiUrl = 'http://localhost:8080/api/boletos';
+  private apiUrl = '/api/boletos';
 
   constructor(private http: HttpClient) {}
 
