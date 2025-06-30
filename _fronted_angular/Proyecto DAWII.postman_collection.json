@@ -1,109 +1,435 @@
 {
 	"info": {
-		"_postman_id": "d60ea027-73b2-4d87-a4aa-60d0ff219a00",
-		"name": "Proyecto DAWII",
+		"_postman_id": "29156c4c-86a5-40e8-b963-56e1929b3c96",
+		"name": "Angular Flight API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19734427"
 	},
 	"item": [
 		{
-			"name": "Backend",
-			"item": [
-				{
-					"name": "http://localhost:8081/auth/prueba",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8081/auth/prueba",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"auth",
-								"prueba"
-							]
-						}
-					},
-					"response": []
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nom_usua\": \"Juan\",\n  \"ape_usua\": \"Perez\",\n  \"correo\": \"juan.perez@example.com\",\n  \"clave\": \"password123\",\n  \"fna_usua\": \"1990-01-01\"\n}"
 				},
-				{
-					"name": "http://localhost:8081/auth/login",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"correo\":\"juan@perez.com\",\r\n    \"clave\":\"jueanperez\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8081/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8081/auth/registrar",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nom_usua\":\"Juan\" ,\r\n    \"ape_usua\":\"Perez\" ,\r\n    \"correo\":\"juan@perez.com\" ,\r\n    \"clave\":\"jueanperez\"  \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8081/auth/registrar",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"auth",
-								"registrar"
-							]
-						}
-					},
-					"response": []
+				"url": {
+					"raw": "{{baseUrl}}/auth/registrar",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"registrar"
+					]
 				}
-			]
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"correo\": \"juan.perez@example.com\",\n  \"clave\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"correo\": \"juan.perez@example.com\",\n  \"clave\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Vuelos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/vuelos?origen=&destino=",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vuelos"
+					],
+					"query": [
+						{
+							"key": "origen",
+							"value": ""
+						},
+						{
+							"key": "destino",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vuelo by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/vuelos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vuelos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vuelo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"numeroVuelo\": \"FL123\",\n  \"aerolinea\": \"Latam\",\n  \"origen\": \"Lima\",\n  \"destino\": \"Cusco\",\n  \"horaSalida\": \"2025-07-01T10:00:00\",\n  \"horaLlegada\": \"2025-07-01T11:30:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vuelos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vuelos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vuelo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"numeroVuelo\": \"FL123\",\n  \"aerolinea\": \"Latam\",\n  \"origen\": \"Lima\",\n  \"destino\": \"Cusco\",\n  \"horaSalida\": \"2025-07-01T10:00:00\",\n  \"horaLlegada\": \"2025-07-01T11:30:00\",\n  \"estado\": \"Programado\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vuelos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vuelos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vuelo",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/vuelos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vuelos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Boletos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boleto by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Boleto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"asiento\": \"12B\",\n  \"precio\": 150.0\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancelar Boleto",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comprar Boleto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"vuelo\": {\n    \"id\": 1\n  },\n  \"asiento\": \"12B\",\n  \"precio\": 150.0\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mis Boletos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/boletos/mios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boletos",
+						"mios"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
