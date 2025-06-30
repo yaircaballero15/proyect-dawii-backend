@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <h2>Crear Vuelo</h2>
+  <form [formGroup]="vueloForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3"><label class="form-label">Número de Vuelo</label><input formControlName="numeroVuelo" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Aerolínea</label><input formControlName="aerolínea" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Origen</label><input formControlName="origen" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Destino</label><input formControlName="destino" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Hora Salida</label><input formControlName="horaSalida" type="datetime-local" class="form-control" /></div>
+    <div class="mb-3"><label class="form-label">Hora Llegada</label><input formControlName="horaLlegada" type="datetime-local" class="form-control" /></div>
+    <button class="btn btn-primary" type="submit">Crear</button>
+  </form>
+</div>
