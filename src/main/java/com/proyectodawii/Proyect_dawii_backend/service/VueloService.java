@@ -57,6 +57,7 @@ public class VueloService {
 
     // Métodos de búsqueda personalizados
     public List<Vuelo> buscarVuelosPorOrigenYDestino(String origen, String destino) {
-        return vueloRepository.findByOrigenAndDestino(origen, destino);
+        return vueloRepository.findByOrigenContainingAndDestinoContaining(origen, destino);
+        //return vueloRepository.findByOrigenAndDestino(origen, destino);
     }
 }

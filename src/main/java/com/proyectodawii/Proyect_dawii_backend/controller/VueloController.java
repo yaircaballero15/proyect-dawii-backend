@@ -5,6 +5,8 @@ import com.proyectodawii.Proyect_dawii_backend.dto.VueloDTO;
 import com.proyectodawii.Proyect_dawii_backend.model.Vuelo;
 import com.proyectodawii.Proyect_dawii_backend.service.VueloService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -76,5 +78,10 @@ public class VueloController {
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         vueloService.eliminarVuelo(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/prueba")
+    public ResponseEntity<?> prueba() {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("prueba");
     }
 }
