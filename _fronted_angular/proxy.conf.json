@@ -8,5 +8,9 @@
     "target": "http://localhost:8081",
     "secure": false,
     "changeOrigin": true
+  },
+  "fallback": {
+    "index": "/index.html",
+    "disableDotRule": true
   }
 }

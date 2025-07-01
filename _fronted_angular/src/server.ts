@@ -62,6 +62,13 @@ if (isMainModule(import.meta.url)) {
   });
 }
 
+
+/*
+app.listen(4000, () => {
+  console.log('✅ SSR server ready at http://localhost:4000');
+});
+
+*/
 /**
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
