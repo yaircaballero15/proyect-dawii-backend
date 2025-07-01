@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BoletoService {
-  private baseUrl = 'http://localhost:8081/api/boletos';
+  private baseUrl = '/api/boletos';
 
   constructor(private http: HttpClient) { }
 

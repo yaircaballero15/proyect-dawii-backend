@@ -3,21 +3,30 @@
     <a class="navbar-brand" routerLink="/">AeroApp</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item" *ngIf="authStorageService.isAuthenticated()">
+        <li class="nav-item" *ngIf="tokenService.isAuthenticated()">
           <a class="nav-link" routerLink="/vuelos">Vuelos</a>
         </li>
-        <li class="nav-item" *ngIf="authStorageService.isAdmin()">
-          <a class="nav-link" routerLink="/admin/vuelos">Admin Vuelos</a>
-        </li>
-        <li class="nav-item" *ngIf="authStorageService.isCliente()">
+        <li class="nav-item" *ngIf="tokenService.isCliente()">
           <a class="nav-link" routerLink="/boletos/mios">Mis Boletos</a>
+        </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <b class="nav-link" style="color:white">Admin Area</b>
+        </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <a class="nav-link" routerLink="/admin/vuelos">Vuelos</a>
+        </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <a class="nav-link" routerLink="/admin/crear-vuelo">Crear Vuelo</a>
+        </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <a class="nav-link" routerLink="/admin/boletos">Boletos</a>
         </li>
       </ul>
       <div class="d-flex">
-        <span class="navbar-text text-white me-3" *ngIf="authStorageService.isAuthenticated()">
-          {{ authStorageService.getUserName() }}
+        <span class="navbar-text text-white me-3" *ngIf="tokenService.isAuthenticated()">
+          {{ tokenService.getUserName() }}
         </span>
-        <button class="btn btn-outline-light" *ngIf="authStorageService.isAuthenticated()" (click)="logout()">Salir</button>
+        <button class="btn btn-outline-light" *ngIf="tokenService.isAuthenticated()" (click)="logout()">Salir</button>
       </div>
     </div>
   </div>

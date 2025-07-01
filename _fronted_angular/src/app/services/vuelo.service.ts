@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class VueloService {
-  private baseUrl = 'http://localhost:8081/api/vuelos';
+  private baseUrl = '/api/vuelos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   getVuelos(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl);
   }
 
   createVuelo(data: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, data);
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', "application/json");
+    return this.http.post<any>(this.baseUrl, data, { headers });
   }
 }
