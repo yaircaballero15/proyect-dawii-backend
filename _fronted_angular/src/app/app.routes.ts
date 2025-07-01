@@ -1,10 +1,7 @@
 import { Routes } from '@angular/router';
-import { ListaBoletosComponent } from '../app/boletos/lista-boletos/lista-boletos';
 import { FormularioComponent } from '../app/vuelos/formulario/formulario.component';
 
-import { InicioComponent } from './inicio/inicio';
-//import { LoginComponent } from './login/login';
-import { RegisterComponent } from './register/register';
+import { InicioComponent } from './components/inicio/inicio';
 import { TarjetaComponent } from './pago/pago';
 
 import { LoginComponent } from './components/login/login.component';
@@ -17,9 +14,7 @@ import { CrearVueloComponent } from './components/crear-vuelo/crear-vuelo.compon
 import { MisBoletosComponent } from './components/mis-boletos/mis-boletos.component';
 
 import { AuthGuard } from './guards/auth.guard';
-
-
-
+import { ListaBoletosComponent } from './components/lista-boletos/lista-boletos.component';
 
 export const routes: Routes = [
 
@@ -30,11 +25,9 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroUsuarioComponent },
   { path: 'login', component: LoginComponent },
 
-
   // Rutas públicas
   { path: 'vuelos', component: ListaVuelosComponent },
-  { path: 'boletos', component: ListaBoletosComponent },
-
+  //{ path: 'boletos', component: ListaBoletosComponent },
   // Rutas solo ADMIN
   {
     path: 'admin/crear-vuelo',
@@ -53,9 +46,11 @@ export const routes: Routes = [
 
   // Ambos roles pueden ver este listado (si quieres)
   {
-    path: 'boletos',
+    path: 'admin/boletos',
     component: ListaBoletosComponent,
     canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+
     // si quieres permitir ambos, omite data.roles
   },
 

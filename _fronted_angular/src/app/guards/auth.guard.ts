@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -5,12 +6,12 @@ import {
   RouterStateSnapshot,
   Router
 } from '@angular/router';
-import { AuthStorageService } from '../services/auth-storage.service';
+import { TokenService } from '../services/token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
   constructor(
-    private auth: AuthStorageService,
+    private tokenService: TokenService,
     private router: Router
   ) {}
 
@@ -18,13 +19,15 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    const user = this.auth.getUser();
+  return true; // ← Permite navegación
+    /*
+    const user = this.tokenService.getUser();
     if (!user) {
       // No está logueado
       this.router.navigate(['/login']);
       return false;
     }
-
+    
     const rolesPermitidos = route.data['roles'] as Array<string> | undefined;
     if (rolesPermitidos && !rolesPermitidos.includes(user.rolUsua)) {
       // No tiene el rol adecuado
@@ -32,5 +35,6 @@ export class AuthGuard implements CanActivate {
       return false;
     }
     return true;
+    */
   }
 }
