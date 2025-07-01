@@ -1,0 +1,8 @@
+<div class="container mt-4">
+  <h2>Mis Boletos</h2>
+  <ul class="list-group">
+    <li *ngFor="let b of boletos" class="list-group-item">
+      Vuelo: {{ b.vuelo.numeroVuelo }} - Asiento: {{ b.asiento }} - Precio: {{ b.precio }}
+    </li>
+  </ul>
+</div>

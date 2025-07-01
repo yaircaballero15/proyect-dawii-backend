@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         /* ENDPOINTS PÚBLICOS */
                         .requestMatchers("/auth/**").permitAll()          // login, register
-                        .requestMatchers("/api/usuarios/**").permitAll()  // (si mantienes alguno público)
+                        .requestMatchers("/api/**").permitAll()  // (si mantienes alguno público)
                         /* CUALQUIER OTRO ENDPOINT REQUIERE TOKEN */
                         .anyRequest().authenticated()
                 )

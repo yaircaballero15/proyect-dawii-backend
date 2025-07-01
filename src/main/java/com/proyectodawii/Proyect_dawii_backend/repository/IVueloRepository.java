@@ -11,5 +11,7 @@ public interface IVueloRepository extends JpaRepository<Vuelo, Long> {
 
     Optional<Vuelo> findByNumeroVuelo(String numeroVuelo);
     List<Vuelo> findByOrigenAndDestino(String origen, String destino);
+    List<Vuelo> findByOrigenContainingAndDestinoContaining(String origen, String destino);
+    
     List<Vuelo> findByAerolinea(String aerolinea);
 }

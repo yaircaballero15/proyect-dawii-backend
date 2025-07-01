@@ -81,4 +81,9 @@ public class BoletoController {
     public List<Boleto> misBoletos(@AuthenticationPrincipal Usuario usuario) {
         return boletoService.listarPorUsuario(usuario.getCodUsua());
     }
+
+    @GetMapping("/prueba")
+    public ResponseEntity<?> prueba() {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("prueba");
+    }
 }
