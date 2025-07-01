@@ -8,6 +8,7 @@ import com.proyectodawii.Proyect_dawii_backend.model.Usuario;
 
 import com.proyectodawii.Proyect_dawii_backend.security.JwtUtil;
 import com.proyectodawii.Proyect_dawii_backend.service.UsuarioService;
+import com.proyectodawii.Proyect_dawii_backend.service.RabbitMQProducer; // <-- Importa el producer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +28,21 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @Autowired
+    private RabbitMQProducer rabbitMQProducer; // <-- Inyecta el producer
+
     @PostMapping("/registrar")
     public ResponseEntity<?> registrar(@RequestBody RegistroUsuarioDTO dto) {
         try {
             Usuario nuevo = servicio.registrarUsuario(dto);
+
+
+            // Envia mensaje a RabbitMQ despues del registro
+            rabbitMQProducer.sendMessage(
+                    "Usuario registrado: " + nuevo.getCorreo() + " - " + nuevo.getNomUsua() + " " + nuevo.getApeUsua()
+            );
+
+
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
