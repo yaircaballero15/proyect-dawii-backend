@@ -25,6 +25,7 @@ public class Usuario {
     private String clave;
     @Temporal(TemporalType.DATE)
     private Date fna_usua;
-    private String rolUsua  ;
-    private String estUsua ;
+
+    private String rolUsua ="CLIENTE";
+    private String estUsua ="ACTIVO";
 }
