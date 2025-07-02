@@ -82,6 +82,6 @@ public class VueloController {
 
     @GetMapping("/prueba")
     public ResponseEntity<?> prueba() {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("prueba");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("prueba");
     }
 }

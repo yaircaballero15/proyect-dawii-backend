@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
 import { FormularioComponent } from '../app/vuelos/formulario/formulario.component';
-
 import { InicioComponent } from './components/inicio/inicio';
 import { TarjetaComponent } from './pago/pago';
-
 import { LoginComponent } from './components/login/login.component';
 
-
-//Jairo Yair
+// Jairo Yair
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ListaVuelosComponent } from './components/lista-vuelos/lista-vuelos.component';
 import { CrearVueloComponent } from './components/crear-vuelo/crear-vuelo.component';
@@ -15,9 +12,9 @@ import { MisBoletosComponent } from './components/mis-boletos/mis-boletos.compon
 
 import { AuthGuard } from './guards/auth.guard';
 import { ListaBoletosComponent } from './components/lista-boletos/lista-boletos.component';
+import { UserListComponent } from './components/lista-usuario/lista-usuarios.component'; // <--- Importa aquí
 
 export const routes: Routes = [
-
   { path: '', component: InicioComponent },
   { path: 'pago', component: TarjetaComponent },
 
@@ -27,11 +24,17 @@ export const routes: Routes = [
 
   // Rutas públicas
   { path: 'vuelos', component: ListaVuelosComponent },
-  //{ path: 'boletos', component: ListaBoletosComponent },
+
   // Rutas solo ADMIN
   {
     path: 'admin/crear-vuelo',
     component: CrearVueloComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
+  {
+    path: 'admin/usuarios',
+    component: UserListComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }
   },
@@ -50,10 +53,8 @@ export const routes: Routes = [
     component: ListaBoletosComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }
-
     // si quieres permitir ambos, omite data.roles
   },
 
   { path: '**', redirectTo: '/login' }
-
 ];

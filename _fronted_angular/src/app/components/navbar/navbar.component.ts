@@ -8,21 +8,21 @@ import { TokenService } from '../../services/token.service';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule,],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
 })
 export class NavbarComponent {
   mostrarLogout = false;
-  constructor(public tokenService: TokenService, private router: Router) { }
 
+  constructor(public tokenService: TokenService, private router: Router) {}
 
   toggleLogout() {
     this.mostrarLogout = !this.mostrarLogout;
   }
+
   logout() {
     this.tokenService.clear();
     this.mostrarLogout = false;
-    this.router.navigate(['/']);
+    this.router.navigate(['/']); 
   }
 }

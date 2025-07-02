@@ -15,7 +15,7 @@ export class CrearVueloComponent {
 
   constructor(private fb: FormBuilder, private vueloService: VueloService) {
     this.vueloForm = this.fb.group({
-      numeroVuelo: ['', Validators.required],
+      numeroVuelo: ['', Validators.required], 
       aerolinea: ['', Validators.required],
       origen: ['', Validators.required],
       destino: ['', Validators.required],
