@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">👤 Usuarios Registrados</h2>
+  <div class="table-responsive shadow rounded">
+    <table class="table table-hover table-bordered table-striped align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Fecha Nacimiento</th>
+          <th>Rol</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.codUsua }}</td>
+          <td>{{ user.nomUsua }}</td>
+          <td>{{ user.apeUsua }}</td>
+          <td>{{ user.correo }}</td>
+          <td>{{ user.fnaUsua | date:'short' }}</td>
+          <td>{{ user.rolUsua }}</td>
+          <td>{{ user.estUsua }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" (click)="eliminarUsuario(user.codUsua)">
+              Eliminar
+            </button>
+            <!-- Puedes agregar aquí más botones para editar/ver -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

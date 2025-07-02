@@ -14,9 +14,22 @@ export class VueloService {
   }
 
   createVuelo(data: any): Observable<any> {
-    const token = this.tokenService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-      .set('Content-Type', "application/json");
+    const headers = this.getHeaders();
     return this.http.post<any>(this.baseUrl, data, { headers });
+  }
+
+  updateVuelo(id: number, data: any): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.put<any>(`${this.baseUrl}/${id}`, data, { headers }); // <--- Corregido
+  }
+
+  deleteVuelo(id: number): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.delete<any>(`${this.baseUrl}/${id}`, { headers }); // <--- Corregido
+  }
+
+  private getHeaders(): HttpHeaders {
+    const token = this.tokenService.getToken();
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`); // <--- Corregido
   }
 }

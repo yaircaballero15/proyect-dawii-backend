@@ -10,6 +10,7 @@
           <th>Destino</th>
           <th>Salida</th>
           <th>Llegada</th>
+          <th *ngIf="esAdmin">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -20,8 +21,55 @@
           <td>{{ v.destino }}</td>
           <td>{{ v.horaSalida | date:'short' }}</td>
           <td>{{ v.horaLlegada | date:'short' }}</td>
+          <td class="text-center" *ngIf="esAdmin">
+            <button class="btn btn-warning btn-sm me-2" (click)="iniciarEdicion(v)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarVuelo(v.id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Formulario de Edición -->
+  <div class="mt-4" *ngIf="editando && esAdmin">
+    <h4 class="text-center mb-3">✏️ Editar Vuelo</h4>
+    <form [formGroup]="editarForm" (ngSubmit)="guardarEdicion()" class="row g-3">
+      <div class="col-md-4">
+        <label>Número</label>
+        <input class="form-control" formControlName="numeroVuelo" />
+      </div>
+      <div class="col-md-4">
+        <label>Aerolínea</label>
+        <input class="form-control" formControlName="aerolinea" />
+      </div>
+      <div class="col-md-4">
+        <label>Origen</label>
+        <input class="form-control" formControlName="origen" />
+      </div>
+      <div class="col-md-4">
+        <label>Destino</label>
+        <input class="form-control" formControlName="destino" />
+      </div>
+      <div class="col-md-4">
+        <label>Hora Salida</label>
+        <input class="form-control" formControlName="horaSalida" type="datetime-local" />
+      </div>
+      <div class="col-md-4">
+        <label>Hora Llegada</label>
+        <input class="form-control" formControlName="horaLlegada" type="datetime-local" />
+      </div>
+      <div class="col-md-4">
+        <label>Estado</label>
+        <select class="form-select" formControlName="estado">
+          <option value="Programado">Programado</option>
+          <option value="Cancelado">Cancelado</option>
+          <option value="Retrasado">Retrasado</option>
+        </select>
+      </div>
+      <div class="col-12 text-center">
+        <button class="btn btn-primary me-2" type="submit">Guardar</button>
+        <button class="btn btn-secondary" type="button" (click)="cancelarEdicion()">Cancelar</button>
+      </div>
+    </form>
   </div>
 </div>

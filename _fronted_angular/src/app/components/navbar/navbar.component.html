@@ -14,6 +14,9 @@
           <b class="nav-link text-white">Admin Area</b>
         </li>
         <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <a class="nav-link" routerLink="/admin/usuarios">Usuarios</a>
+        </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
           <a class="nav-link" routerLink="/admin/crear-vuelo">Crear Vuelo</a>
         </li>
         <li class="nav-item" *ngIf="tokenService.isAdmin()">
