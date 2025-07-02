@@ -1,20 +1,27 @@
-<div class="container mt-4">
-  <h2>Vuelos Disponibles</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Número</th><th>Aerolínea</th><th>Origen</th><th>Destino</th><th>Salida</th><th>Llegada</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let v of vuelos">
-        <td>{{ v.numeroVuelo }}</td>
-        <td>{{ v.aerolinea }}</td>
-        <td>{{ v.origen }}</td>
-        <td>{{ v.destino }}</td>
-        <td>{{ v.horaSalida | date:'short' }}</td>
-        <td>{{ v.horaLlegada | date:'short' }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">✈️ Vuelos Disponibles</h2>
+  <div class="table-responsive shadow rounded">
+    <table class="table table-hover table-bordered table-striped align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>Número</th>
+          <th>Aerolínea</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Salida</th>
+          <th>Llegada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of vuelos">
+          <td>{{ v.numeroVuelo }}</td>
+          <td>{{ v.aerolinea }}</td>
+          <td>{{ v.origen }}</td>
+          <td>{{ v.destino }}</td>
+          <td>{{ v.horaSalida | date:'short' }}</td>
+          <td>{{ v.horaLlegada | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

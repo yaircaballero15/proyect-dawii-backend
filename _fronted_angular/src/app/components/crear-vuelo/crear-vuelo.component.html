@@ -1,12 +1,45 @@
-<div class="container mt-4">
-  <h2>Crear Vuelo</h2>
-  <form [formGroup]="vueloForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3"><label class="form-label">Número de Vuelo:( EJM FL123)</label><input formControlName="numeroVuelo" class="form-control" /></div>
-    <div class="mb-3"><label class="form-label">Aerolínea:(EJM LATAM)</label><input formControlName="aerolinea" class="form-control" /></div>
-    <div class="mb-3"><label class="form-label">Origen (EJM LIMA)</label><input formControlName="origen" class="form-control" /></div>
-    <div class="mb-3"><label class="form-label">Destino (EJM CUSCO)</label><input formControlName="destino" class="form-control" /></div>
-    <div class="mb-3"><label class="form-label">Hora Salida</label><input formControlName="horaSalida" type="datetime-local" class="form-control" /></div>
-    <div class="mb-3"><label class="form-label">Hora Llegada</label><input formControlName="horaLlegada" type="datetime-local" class="form-control" /></div>
-    <button class="btn btn-primary" type="submit">Crear</button>
-  </form>
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 rounded-4">
+    <h2 class="text-center mb-4 text-primary fw-bold">🛫 Crear Vuelo</h2>
+
+    <form [formGroup]="vueloForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Número de Vuelo <span class="text-muted">(ej: FL123)</span></label>
+          <input formControlName="numeroVuelo" class="form-control" placeholder="FL123" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Aerolínea <span class="text-muted">(ej: LATAM)</span></label>
+          <input formControlName="aerolinea" class="form-control" placeholder="LATAM" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Origen <span class="text-muted">(ej: LIMA)</span></label>
+          <input formControlName="origen" class="form-control" placeholder="LIMA" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Destino <span class="text-muted">(ej: CUSCO)</span></label>
+          <input formControlName="destino" class="form-control" placeholder="CUSCO" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Hora Salida</label>
+          <input formControlName="horaSalida" type="datetime-local" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Hora Llegada</label>
+          <input formControlName="horaLlegada" type="datetime-local" class="form-control" />
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-success px-4 py-2 fw-bold shadow-sm" type="submit">
+          ✈️ Crear Vuelo
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

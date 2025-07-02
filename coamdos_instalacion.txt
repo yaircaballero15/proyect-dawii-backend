@@ -1,0 +1,72 @@
+
+
+
+Ì†ΩÌª†Ô∏è OPCI√ìN 1: TEMPORAL (r√°pido para probar)
+Abre PowerShell como administrador y ejecuta:
+
+powershell
+Copiar
+Editar
+$env:ERLANG_HOME = "C:\Program Files\Erlang OTP"
+Y verifica que funciona:
+
+powershell
+Copiar
+Editar
+cd "C:\Program Files\RabbitMQ Server\rabbitmq_server-4.1.1\sbin"
+.\rabbitmq-service.bat install
+Ì†ΩÌª†Ô∏è OPCI√ìN 2: PERMANENTE (recomendado)
+Presiona Win + R ‚Üí escribe: SystemPropertiesAdvanced ‚Üí Enter
+
+Haz clic en Variables de Entorno
+
+En "Variables del sistema", crea una nueva:
+
+Nombre: ERLANG_HOME
+
+Valor: C:\Program Files\Erlang OTP
+
+Luego edita la variable Path:
+
+A√±ade: %ERLANG_HOME%\erts-16.0.1\bin
+
+Acepta todo y reinicia tu computadora
+
+‚ñ∂Ô∏è Luego de configurar ERLANG_HOME:
+Ejecuta nuevamente:
+
+powershell
+Copiar
+Editar
+cd "C:\Program Files\RabbitMQ Server\rabbitmq_server-4.1.1\sbin"
+.\rabbitmq-service.bat install
+net start RabbitMQ
+
+
+
+
+Poweshell como administrador
+cd C:\Program Files\RabbitMQ Server\rabbitmq_server-4.1.1\sbin
+
+rabbitmq-plugins enable rabbitmq_management
+
+
+net stop RabbitMQ
+
+
+net start RabbitMQ
+
+
+---- 
+para instalar docker desktop
+
+Activar virtualizacion en las bios
+
+Activar Modo UEGI
+
+# Abrir panel de control
+# Activar o desactivar caracteristicas de windows
+
+dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+dism.exe /online /enable-feature /featurename:Windows-Subsystem-Linux /all /norestart

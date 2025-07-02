@@ -1,0 +1,26 @@
+.btn-danger {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  z-index: 10;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  border-color: #b02a37;
+}
+
+.user-toggle {
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.user-toggle:hover {
+  color: #adb5bd;
+}
+
+.btn-success {
+  border-radius: 8px;
+  font-weight: 600;
+}
