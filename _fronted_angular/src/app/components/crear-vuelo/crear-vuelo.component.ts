@@ -28,14 +28,17 @@ export class CrearVueloComponent {
     if (this.vueloForm.valid) {
       this.vueloService.createVuelo(this.vueloForm.value).subscribe(
         res => {
-          alert("Vuelo creado, se recargara la pagina.");
+          alert("✅ Vuelo creado con éxito. Se recargará la página.");
           location.reload();
-          console.log('Vuelo creado', res)
+          console.log('Vuelo creado', res);
         },
         err => {
-          console.error(err)
+          console.error(err);
+          alert("❌ Error al crear vuelo.");
         }
       );
+    } else {
+      alert("⚠️ Por favor, completa todos los campos correctamente.");
     }
   }
 }

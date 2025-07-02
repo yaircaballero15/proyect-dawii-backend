@@ -28,24 +28,26 @@ export class LoginComponent {
   }
 
   onLogin() {
-    console.log('Enviando login:', this.loginForm.value);
+
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         res => {
-          console.log('Respuesta del login:', res); // 👈
-
           this.tokenService.setToken(res.token);
           this.tokenService.saveUser(res);
+          alert('✅ Bienvenido');
           this.router.navigate(['/vuelos']);
         },
         error => {
-          console.error('Error de login:', error); // 👈
-
-          alert('Login incorrecto');
+          console.error('Error de login:', error);
+          alert('❌ Correo o contraseña incorrectos.');
         }
       );
     } else {
-      console.warn('Formulario inválido:', this.loginForm.errors);
+      alert('⚠️ Por favor completa todos los campos correctamente.');
     }
+  }
+
+  irARegistro() {
+    this.router.navigate(['/registro']); // Cambia si tienes otra ruta
   }
 }

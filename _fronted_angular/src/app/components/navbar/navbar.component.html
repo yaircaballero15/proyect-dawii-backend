@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">AeroApp</a>
+
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav-item" *ngIf="tokenService.isAuthenticated()">
@@ -10,10 +11,7 @@
           <a class="nav-link" routerLink="/boletos/mios">Mis Boletos</a>
         </li>
         <li class="nav-item" *ngIf="tokenService.isAdmin()">
-          <b class="nav-link" style="color:white">Admin Area</b>
-        </li>
-        <li class="nav-item" *ngIf="tokenService.isAdmin()">
-          <a class="nav-link" routerLink="/admin/vuelos">Vuelos</a>
+          <b class="nav-link text-white">Admin Area</b>
         </li>
         <li class="nav-item" *ngIf="tokenService.isAdmin()">
           <a class="nav-link" routerLink="/admin/crear-vuelo">Crear Vuelo</a>
@@ -21,12 +19,33 @@
         <li class="nav-item" *ngIf="tokenService.isAdmin()">
           <a class="nav-link" routerLink="/admin/boletos">Boletos</a>
         </li>
+        <li class="nav-item" *ngIf="tokenService.isAdmin()">
+          <a class="nav-link" routerLink="/pago">Pago</a>
+        </li>
       </ul>
-      <div class="d-flex">
-        <span class="navbar-text text-white me-3" *ngIf="tokenService.isAuthenticated()">
+
+      <!-- Si está autenticado, mostrar nombre y botón salir -->
+      <div class="d-flex align-items-center position-relative" *ngIf="tokenService.isAuthenticated()">
+        <span
+          class="navbar-text text-white me-3 user-toggle"
+          (click)="toggleLogout()"
+          style="cursor: pointer;"
+        >
           {{ tokenService.getUserName() }}
         </span>
-        <button class="btn btn-outline-light" *ngIf="tokenService.isAuthenticated()" (click)="logout()">Salir</button>
+
+        <button
+          class="btn btn-danger position-absolute end-0 top-100 mt-1"
+          *ngIf="mostrarLogout"
+          (click)="logout()"
+        >
+          Salir
+        </button>
+      </div>
+
+      <!-- Si NO está autenticado, mostrar botón de iniciar sesión -->
+      <div *ngIf="!tokenService.isAuthenticated()">
+        <a class="btn btn-success" routerLink="/login">Iniciar sesión</a>
       </div>
     </div>
   </div>
